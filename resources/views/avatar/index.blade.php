@@ -59,8 +59,17 @@ $(function() {
                 }
             },
             error: function(xhr) {
+                let html;
                 errors = JSON.parse(xhr.responseText);
-                console.log(errors);
+                html += '<div class="alert alert-danger">';
+                html +=     '<ul>';
+                for (items in errors) {
+                    html +=     '<li>' + errors.items + '</li>';
+                }
+                html +=     '</ul>';
+                html += '</div>';
+
+                $('.panel-body').prepend(html);
             }
         });
     });
